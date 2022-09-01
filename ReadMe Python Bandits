@@ -1,0 +1,38 @@
+Ce dossier contient les implémentations de différents algorithmes de bandits : Uniform alloc, Epsilon Greedy, UCB et LINUCB.
+Il y a un notebook python pour chaque algorithme, avec à chaque fois des tests pour s'assurer du bon fonctionnement de ceux-ci.
+
+Ces algorithmes sont une transposition de certains algorithmes codés en R par Emmanuelle Claeys, tous disponibles au lien suivant : https://github.com/manuclaeys/bandit4abtest
+Cette librairie R contient une documentation détaillée de toutes les fonctions utilisées dans mes notebooks.
+
+
+##########################################################################################################################################################################################################
+##########################################################################################################################################################################################################
+
+
+
+Le fichier bandits.py contient toutes les fonctions des notesbooks "Uniform alloc", "Epsilon Greedy & Tests", "UCB & Tests" et "LINUCB & Tests", ainsi que de fonctions nécéssaires pour calculer le regret "simple". Tous ont un notebook propre avec des détails explicatifs. Le fichier "bandits.py" facilite les importations des fonctions qu'il contient, et est utilisé dans les notebooks "Test raw_data", "revue données générées" et "clustering + bandits sur clusters".
+
+
+
+##########################################################################################################################################################################################################
+##########################################################################################################################################################################################################
+
+
+
+Le notebook "Tests raw_data" est une exploitation des données du fichier "raw_data.csv", situé ici : ".../npb_fast/02_remove_wm". 
+Il comprend une première partie d'importation de librairies (dont le fichier bandits.py), d'importation et traitement des données : création d'un dataframe de contexte (pour LINUCB) et d'un dataframe de récompenses.
+La seconde partie contient l'application de 3 algorithmes de bandits : Uniforme, epsilon-greedy et linucb.
+Une troisième partie est consacrée à l'exploitation des résultats de Linucb, avec une fonction permettant d'utiliser les coefficients approchés calculés par l'algorithme pour attribuer une fréquence optimale pour chaque application (cf fonction calcul_freq).
+La fin du notebook est une comparaison entre les résultats de linucb et d'un algo ucb pour chaque bras. Les résultats étant bien meilleurs avec Linucb, la méthode d'UCB pour chaque bras n'a pas été testée davantage.
+Des explications détaillées sont présentes dans le notebook.
+
+
+
+##########################################################################################################################################################################################################
+##########################################################################################################################################################################################################
+
+
+
+Le notebook "clustering et bandits sur clusters" est le notebook de fin de stage. Ici, les données détaillées de chaque expériences sont utilisées pour créer des clusters ne dépendant (a priori) plus des noms des application. La méthode de clustering utilisée a été Kmeans (arbitrairement).
+La seconde partie ressemble au notebook "test raw_data" : les algos de bandits sont exécutés sur les clusters, et on affecte une fréquence optimale pour chaque cluster.
+Ici aussi, des explications plus détaillées sont présentes dans le notebook.
